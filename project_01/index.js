@@ -30,7 +30,7 @@ app.use((req,res,next)=>{
 app.use((req,res,next)=>{
   console.log(req.cer);
 
-  fs.appendFile("./log.txt", `\n ${Date.now()} |  ${req.method} |  ${req.path}`, (err) => {
+  fs.appendFile("./log.txt", `\n ${Date.now()} |  ${req.method} |  ${req.path}| ${res.statusCode}`, (err) => {
     if (err) {
       console.log(err);
     }

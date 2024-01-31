@@ -6,3 +6,8 @@
  1706683161363 |  GET |  /api/users/1003
  1706683185735 |  GET |  /api/users/1003
  1706683674859 |  GET |  /api/users/
+ 1706684163835 |  GET |  /api/uses/
+ 1706684168803 |  GET |  /api/users/
+ 1706684244452 |  GET |  /api/users/| undefined
+ 1706684500065 |  GET |  /api/users/| null
+ 1706684552992 |  GET |  /api/users/| 200
