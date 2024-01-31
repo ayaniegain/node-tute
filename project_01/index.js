@@ -1,6 +1,7 @@
 const express = require("express");
 const users = require("./MOCK_DATA.json");
 const fs = require("fs");
+const { error } = require("console");
 const app = express();
 const port = 8000;
 
@@ -56,6 +57,7 @@ app.get("/api/users/:id", (req, res) => {
 
   let id = Number(req.params.id);
   let singleUser = users.find((user) => user.id == id);
+  if(!singleUser) return res.status(404).json({error:"user not found"});
 
   return res.send(singleUser);
 });
@@ -102,7 +104,7 @@ app.post("/api/users", (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      return res.json({ status: "success", id: users.length });
+      return res.status(201).json({ status: "success", id: users.length });
     }
   });
 });

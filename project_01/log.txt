@@ -11,3 +11,6 @@
  1706684244452 |  GET |  /api/users/| undefined
  1706684500065 |  GET |  /api/users/| null
  1706684552992 |  GET |  /api/users/| 200
+ 1706685040423 |  POST |  /api/users/| 200
+ 1706685067146 |  POST |  /api/users/| 200
+ 1706685625291 |  GET |  /api/users/2000| 200
