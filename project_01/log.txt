@@ -14,3 +14,45 @@
  1706685040423 |  POST |  /api/users/| 200
  1706685067146 |  POST |  /api/users/| 200
  1706685625291 |  GET |  /api/users/2000| 200
+ 1706769080184 |  POST |  /api/users| 200
+ 1706769151290 |  POST |  /api/users| 200
+ 1706769249989 |  POST |  /api/users| 200
+ 1706769392697 |  POST |  /api/users| 200
+ 1706769441059 |  POST |  /api/users| 200
+ 1706777577005 |  POST |  /api/users| 200
+ 1706777582020 |  POST |  /api/users| 200
+ 1706777602500 |  POST |  /api/users| 200
+ 1706777745370 |  POST |  /api/users| 200
+ 1706777771097 |  POST |  /api/users| 200
+ 1706777892972 |  POST |  /api/users| 200
+ 1706777939625 |  POST |  /api/users| 200
+ 1706777994635 |  POST |  /api/users| 200
+ 1706778330150 |  POST |  /api/users| 200
+ 1706778370838 |  POST |  /api/users| 200
+ 1706778645263 |  POST |  /api/users| 200
+ 1706778703766 |  POST |  /api/users| 200
+ 1706778758901 |  POST |  /api/users| 200
+ 1706778790914 |  POST |  /api/users| 200
+ 1706778910807 |  POST |  /api/users| 200
+ 1706779551260 |  POST |  /api/users| 200
+ 1706779607202 |  POST |  /api/users| 200
+ 1706779760268 |  POST |  /api/users| 200
+ 1706780081628 |  POST |  /api/users| 200
+ 1706780133011 |  POST |  /api/users| 200
+ 1706780200276 |  POST |  /api/users| 200
+ 1706782559403 |  POST |  /api/users| 200
+ 1706782577604 |  POST |  /api/users| 200
+ 1706782600476 |  POST |  /api/users| 200
+ 1706782787842 |  POST |  /api/users| 200
+ 1706782829745 |  POST |  /api/users| 200
+ 1706782882431 |  POST |  /api/users| 200
+ 1706783121820 |  GET |  /api/users| 200
+ 1706783175976 |  GET |  /api/users| 200
+ 1706783228307 |  GET |  /api/users| 200
+ 1706786013670 |  DELETE |  /api/users/65bb6e5f4354df011c4fd3ba| 200
+ 1706786039841 |  DELETE |  /api/users/65bb6e5f4354df011c4fd3ba| 200
+ 1706786440556 |  DELETE |  /api/users/65bb6e5f4354df011c4fd3ba| 200
+ 1706786503955 |  DELETE |  /api/users/65bb6e7f4354df011c4fd3bc| 200
+ 1706786644769 |  GET |  /api/users/65bb6eb94354df011c4fd3be| 200
+ 1706787110431 |  GET |  /api/users/65bb6eb94354df011c4fd3be| 200
+ 1706787315742 |  PUT |  /api/users/65bb6eb94354df011c4fd3be| 200
