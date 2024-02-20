@@ -3,19 +3,23 @@ import product from "./product.js";
 import { v4 as uuidv4 } from "uuid";
 
 const app = express();
-
+app.use(express.json());
 let PORT = process.env.PORT || 8000;
 
-app.use(express.json());
-
 const loginMiddleware = (req, res, next) => {
+  req.name = "Ayan";
   console.log(req.method);
-
   next();
 };
 
-const commonIndex= (req, res, next) => {
+const commonIndex = (req, res, next) => {
+  const {
+    params: { id },
+    body,
+  } = req;
 
+  let productIndex = product.findIndex((prod) => prod.id == Number(id));
+  Object.assign(req, { productIndex, id, body });
   next();
 };
 
@@ -24,23 +28,24 @@ app.use(loginMiddleware);
 //GET----
 
 app.get("/", (req, res) => {
+  console.log("hello", req.name);
+
   res.status(201).send("Hello World!");
 });
 
-app.get("/api/users/", (req, res) => {
-  res.status(201).json({ name: "ayan" });
+app.get("/api/products/", (req, res) => {
+  res.status(201).send(product);
 });
 
-app.get("/api/products/:id", (req, res) => {
-  let productId = Number(req.params.id);
-  if (isNaN(productId)) res.status(404).send("invalid params");
-
-  let singleProduct = product.find((e) => e.id == productId);
-
+app.get("/api/products/:id", commonIndex, (req, res) => {
+  let { productIndex, id, body } = req;
+  if (isNaN(id)) res.status(404).send("invalid params");
+  let singleProduct = product[productIndex];
   res.status(200).send(singleProduct);
 });
 
 app.get("/api/test/", (req, res) => {
+  //QUERY
   let { filter, value } = req.query;
 
   let filteredItem = product.filter((item) =>
@@ -53,12 +58,12 @@ app.get("/api/test/", (req, res) => {
 
 //POST_____________
 
-app.post("/api/post/", (req, res) => {
-  let newUser = req.body;
+app.post("/api/products/", (req, res) => {
+  let newProduct = req.body;
 
-  newUser.id = uuidv4();
+  newProduct.id = uuidv4();
 
-  product.push(newUser);
+  product.push(newProduct);
 
   console.log(product.length);
 
@@ -66,15 +71,8 @@ app.post("/api/post/", (req, res) => {
 });
 
 //PUT----
-app.put("/api/users/:id", (req, res) => {
-  const {
-    params: { id },
-    body,
-  } = req;
-
-  let productIndex = product.findIndex((user) => user.id == Number(id));
-
-  console.log(productIndex);
+app.put("/api/products/:id", commonIndex, (req, res) => {
+  let { productIndex, id, body } = req;
 
   product[productIndex] = { id: Number(id), ...body };
 
@@ -82,15 +80,10 @@ app.put("/api/users/:id", (req, res) => {
 });
 //PATCH----
 
-app.patch("/api/users/:id", (req, res) => {
-  let {
-    params: { id },
-    body,
-  } = req;
+app.patch("/api/products/:id", commonIndex, (req, res) => {
+  let { productIndex, id, body } = req;
 
-  let productIndex = product.findIndex((user) => user.id == Number(id));
-
-  console.log(productIndex);
+  console.log(req.productIndex);
 
   product[productIndex] = { ...product[productIndex], ...body };
 
@@ -98,12 +91,8 @@ app.patch("/api/users/:id", (req, res) => {
 });
 //DELETE---
 
-app.delete("/api/users/:id", (req, res) => {
-  let {
-    params: { id },
-    body
-  } = req;
-  let productIndex = product.findIndex((user) => user.id == Number(id));
+app.delete("/api/products/:id", commonIndex, (req, res) => {
+  let { productIndex, id, body } = req;
 
   product.splice(productIndex, 1);
 
