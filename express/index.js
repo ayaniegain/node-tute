@@ -8,6 +8,21 @@ let PORT = process.env.PORT || 8000;
 
 app.use(express.json());
 
+const loginMiddleware = (req, res, next) => {
+  console.log(req.method);
+
+  next();
+};
+
+const commonIndex= (req, res, next) => {
+
+  next();
+};
+
+app.use(loginMiddleware);
+
+//GET----
+
 app.get("/", (req, res) => {
   res.status(201).send("Hello World!");
 });
@@ -50,19 +65,22 @@ app.post("/api/post/", (req, res) => {
   res.status(200).send(product);
 });
 
-app.put("/api/users/:id",(req,res)=>{
+//PUT----
+app.put("/api/users/:id", (req, res) => {
+  const {
+    params: { id },
+    body,
+  } = req;
 
-  const {params:{id},body}=req
+  let productIndex = product.findIndex((user) => user.id == Number(id));
 
- let newUserIndex= product.findIndex((user)=>user.id==id )
+  console.log(productIndex);
 
- console.log(newUserIndex);
+  product[productIndex] = { id: Number(id), ...body };
 
- product[newUserIndex]={id:Number(id),...body}
-
-res.status(200).send(product);
-
-})
+  res.status(200).send(product);
+});
+//PATCH----
 
 app.patch("/api/users/:id", (req, res) => {
   let {
@@ -78,10 +96,12 @@ app.patch("/api/users/:id", (req, res) => {
 
   res.status(200).send(product);
 });
+//DELETE---
 
 app.delete("/api/users/:id", (req, res) => {
   let {
     params: { id },
+    body
   } = req;
   let productIndex = product.findIndex((user) => user.id == Number(id));
 
