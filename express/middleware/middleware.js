@@ -1,6 +1,6 @@
 import product from "../product.js";
 
-import  {querySchema}  from "../model/scema.js";
+import  {querySchema}  from "../model/model.schema.js";
 const loginMiddleware = (req, res, next) => {
   req.name = "Ayan";
   console.log(req.method);

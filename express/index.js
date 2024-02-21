@@ -14,6 +14,9 @@ app.use("/api/v1/users/", userRouter);
 //Product
 app.use("/api/v1/products/", productRouter);
 
+
+
+
 app.listen(PORT, () => {
   console.log(`port running on ${PORT}`);
 });
