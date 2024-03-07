@@ -1,34 +1,21 @@
-// let add=(a,b)=>a+b
+const express= require('express')
 
-// let res=add(3,7)
+const app=express()
 
-// console.log(res);
+app.get('/',(req,res)=>{
 
-//callback
+    let myCar={
+        "name":"Audi",
+        "price":"2cr",
+        "color":"black",
+        "automatic":true
+    }
 
-// function add() {
-//   console.log("working completed");
-// }
+    res.send(myCar)
 
-// function myfunc(a, b, callback) {
-//   callback();
+})
 
-//   let sum = a + b;
 
-//   return sum;
-// }
-
-// console.log(myfunc(9, 4, add));
-
-const fs = require("fs");
-const os = require("os");
-
-fs.writeFileSync("index.txt", "Hello World!");
-
-let { username } = os.userInfo();
-
-fs.appendFileSync("index.txt", ` - ${username}`);
-
-let data = fs.readFileSync("index.txt", "utf8");
-
-console.log(data);
+app.listen(8000,()=>{
+    console.log("server connected");
+}) 
