@@ -1,6 +1,10 @@
 const express= require('express')
-
+const connectDB = require('./db');
 const app=express()
+
+connectDB()
+app.use(express.json())
+
 
 app.get('/',(req,res)=>{
 
@@ -13,6 +17,13 @@ app.get('/',(req,res)=>{
 
     res.send(myCar)
 
+})
+
+app.post('/items',(req,res)=>{
+
+    let data=req.body
+    console.log(data);
+    res.send("data saved...")
 })
 
 
